@@ -1,17 +1,17 @@
 # Elementary
 This is my personal blog's Jekyll template that I've been optimizing for performance, accessibility, usability, readability and simplicity in general. 
 
-I personally do not approve of personal blogs bloated with hundreds of kilobytes of trackers and analytics code. 
+I personally do not approve of personal blogs bloated with hundreds of kilobytes of trackers and analytics code, and hence, this is an attempt at creating something that I'd be comfortable with using on my website.
 
 ### Performance
 ![](./tmp/perf-2.jpg)
 
-Images (clockwise from top left)
+Images from my website (clockwise from top left)
 
-- Perfect 100 Google Page Speed score on both mobile and desktop
-- Kindle's experimental browser running the theme
-- Median load time (From Cloudflare) is less than a second
-- 100% cached by Cloudflare CDN
+- Perfect **100 Google Page Speed score** on both mobile and desktop
+- **Kindle's experimental browser** running the theme
+- Median load time (From Cloudflare) is **less than a second**
+- **100% cached** by Cloudflare CDN
 
 ### Dark mode
 ![](./tmp/dark-mode.gif)
@@ -36,12 +36,29 @@ Note: Scroll progress requires JavaScript
 - No request made to any third party
 - Any much more...
 
-### Installation
-- Add Elementary repository as a submodule to your Jekyll blog `git submodule add git@github.com:abhn/Elementary.git elementary`
-- Add `theme: elementary` to your `_config.yml`
-- Add `gem 'elementary', path: 'elementary'` to your `Gemfile`
-- Run `bundle install` command in your project directory
-- Add `./elementary` to `exclude` section of `_config.yml` so that the theme's files aren't compiled into the final site
+### Installation (Prerequisite: A working Jekyll site)
+- If you don't have a Jekyll site, read up how to create one here: [https://jekyllrb.com/docs/](https://jekyllrb.com/docs/)
+- Add Elementary repository as a submodule to your Jekyll blog by running the following command.
+```
+git submodule add git@github.com:abhn/Elementary.git elementary
+```
+- Tell Jekyll it has to use Elementary as theme by adding the following to your `_config.yml` (in case you're wondering where, just add it to the bottom on a new line). 
+```
+theme: elementary
+```
+- Add the following to your `Gemfile`
+```
+source 'https://rubygems.org'
+gem 'elementary', path: 'elementary'
+```
+- Run `bundle install` command in your project directory and make sure there are no errors
+- Add `./elementary` to `exclude` section of `_config.yml` so that the theme's files aren't compiled into the final site by adding the following to your `_config.yml` (if `exclude` key exists, just add a new item to it)
+```
+exclude:
+  - ./elementary
+```
+- Run command `bundle exec jekyll serve` to run local server (open browser to [http://localhost:4000](http://localhost:4000) to view the site).
+- Run command `bundle exec jekyll build` to output a production build to the `_site` directory.
 
 ### Customization
 - You're free to make any edits to the theme's files in the submodule. You can also `git pull origin master` from the submodule directory to update the theme in case I push updates, but you don't have to.
@@ -50,12 +67,6 @@ Note: Scroll progress requires JavaScript
 ### Credits
 - Eric S Raymond (http://www.catb.org/~esr/hacker-emblem/glider.png) for the favicon
 
-### Inspiration
-
-I recently read in a blog post that a personal blog has to be fast and lean. There's no reason for a personal blog to be bloated and take 2 seconds to load. That was when I reviewed my own blog code and started analyzing. I discovered that I was loading jQuery just for another jQuery plugin which just helped the images and videos to be mobile responsive. That was some 40KB of overhead, 2 additional requests which could have been prevented with just a `max-width: 100%` attribute to the culprit elements. Similarly, there was Disqus which loaded tonnes of scripts along with its own Google Analytics script. 
-
-I went on stripping weight from the code, and was left with something what you see here. Few extra CSS tweaks and Tadaa!
-
 ### License
 GNU GENERAL PUBLIC LICENSE Version 3
 
@@ -63,3 +74,11 @@ GNU GENERAL PUBLIC LICENSE Version 3
 When I started with the [original project](https://github.com/abhn/Elementary/releases/tag/v0.1) around 2 years ago, my goal was to get rid of all that unnecessary code and progressively add only the most essential bits. 
 
 I feel like the theme is in good enough shape right now that I can call it a v1.0
+
+-----
+
+### Original inspiration
+
+I recently read in a blog post that a personal blog has to be fast and lean. There's no reason for a personal blog to be bloated and take 2 seconds to load. That was when I reviewed my own blog code and started analyzing. I discovered that I was loading jQuery just for another jQuery plugin which just helped the images and videos to be mobile responsive. That was some 40KB of overhead, 2 additional requests which could have been prevented with just a `max-width: 100%` attribute to the culprit elements. Similarly, there was Disqus which loaded tonnes of scripts along with its own Google Analytics script. 
+
+I went on stripping weight from the code, and was left with something what you see here. Few extra CSS tweaks and Tadaa!
